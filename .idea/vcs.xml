@@ -7,6 +7,7 @@
     <mapping directory="$PROJECT_DIR$/../dream-shops" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../ecom-project" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../ecom-sample-project" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../tasks" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../userManagement" vcs="Git" />
   </component>
