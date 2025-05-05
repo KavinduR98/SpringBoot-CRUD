@@ -6,10 +6,8 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String home(@RequestParam(value = "name", defaultValue = "") String name, Model model) {
+    public String home(Model model) {
         List<Customer> customerList = customerService.getAllCustomers();
         model.addAttribute("customerList", customerList);
         return "home";
@@ -38,13 +36,25 @@ public class HomeController {
     @PostMapping("/save")
     public String save(@Valid @ModelAttribute("customer") Customer customer,
                        BindingResult bindingResult,
+                       RedirectAttributes redirectAttributes,
                        Model model){
 
         if (bindingResult.hasErrors()){
-            return "/create";
+            return "create";
         }
         customerService.save(customer);
+        redirectAttributes.addFlashAttribute(
+                "message",
+                "Customer created successfully"
+        );
         return "redirect:/";
+    }
+
+    @GetMapping("customer/{id}/edit")
+    public String edit(@PathVariable long id, Model model){
+        Customer customer = customerService.findById(id).orElse(null);
+        model.addAttribute("customer", customer);
+        return "create";
     }
 
 }

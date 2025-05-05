@@ -43,6 +43,9 @@
     </header>
     <main>
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <div th:if="${message}" class="bbg-green-200 border border-green-400 border-solid mb-5 p-2 rounded-md text-green-900">
+                <p th:text="${message}"></p>
+            </div>
             <a class="bg-blue-600 font-medium px-3 py-2 rounded-md text-sm text-white inline-block mb-5 hover:bg-blue-700" th:href="@{'/create'}">New Customer</a>
             <table class="table-auto w-full">
                 <thead class="bg-gray-800 text-white uppercase">
@@ -52,6 +55,9 @@
                     <th class="px-6 py-3 text-center">Last Name</th>
                     <th class="px-6 py-3 text-center">Email</th>
                     <th class="px-6 py-3 text-center">Phone</th>
+                    <th>
+                        &nbsp;
+                    </th>
                 </tr>
                 </thead>
 
@@ -62,6 +68,17 @@
                     <td class="px-6 py-5 text-center" th:text="${customer.lastName}"></td>
                     <td class="px-6 py-5 text-center" th:text="${customer.email}"></td>
                     <td class="px-6 py-5 text-center" th:text="${customer.phone}"></td>
+                    <td class="px-6 py-5 text-center">
+                        <a th:href="@{/customer/{id}/edit(id=${customer.id})}"
+                        class="bg-blue-600 font-medium hover:bg-blue-700 px-3 py-2 rounded-md text-sm text-white mr-1">
+                            Edit
+                        </a>
+
+                        <a th:href="@{/customer/{id}/delete(id=${customer.id})}"
+                           class="bg-red-600 font-medium hover:bg-red-700 px-3 py-2 rounded-md text-sm text-white mr-1">
+                            Delete
+                        </a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
