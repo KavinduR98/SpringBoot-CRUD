@@ -56,24 +56,36 @@
                             <label for="firstName" class="block text-sm/6 font-semibold text-gray-900">First name</label>
                             <div class="mt-2.5">
                                 <input type="text" th:field="${customer.firstName}" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
+                                <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                                class="text-red-600 text-sm mt-1">
+                                </div>
                             </div>
                         </div>
                         <div>
                             <label for="lastName" class="block text-sm/6 font-semibold text-gray-900">Last name</label>
                             <div class="mt-2.5">
                                 <input type="text" th:field="${customer.lastName}" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
+                                <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                     class="text-red-600 text-sm mt-1">
+                                </div>
                             </div>
                         </div>
                         <div class="sm:col-span-2">
                             <label for="email" class="block text-sm/6 font-semibold text-gray-900">Email</label>
                             <div class="mt-2.5">
                                 <input type="email" th:field="${customer.email}" autocomplete="email" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
+                                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                     class="text-red-600 text-sm mt-1">
+                                </div>
                             </div>
                         </div>
                         <div class="sm:col-span-2">
                             <label for="phone" class="block text-sm/6 font-semibold text-gray-900">Phone</label>
                             <div class="mt-2.5">
                                 <input type="number" th:field="${customer.phone}" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
+                                <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"
+                                     class="text-red-600 text-sm mt-1">
+                                </div>
                             </div>
                         </div>
 

@@ -2,8 +2,10 @@ package com.ushan.springBootCRUD.controller;
 
 import com.ushan.springBootCRUD.model.Customer;
 import com.ushan.springBootCRUD.service.CustomerService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +36,13 @@ public class HomeController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute("customer") Customer customer, Model model){
+    public String save(@Valid @ModelAttribute("customer") Customer customer,
+                       BindingResult bindingResult,
+                       Model model){
+
+        if (bindingResult.hasErrors()){
+            return "/create";
+        }
         customerService.save(customer);
         return "redirect:/";
     }

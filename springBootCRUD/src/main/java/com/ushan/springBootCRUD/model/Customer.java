@@ -1,6 +1,8 @@
 package com.ushan.springBootCRUD.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity(name = "Customer")
 @Table(name = "customer")
@@ -11,12 +13,16 @@ public class Customer {
     @Column(name = "id")
     private Long id;
 
+    @NotEmpty(message = "First Name is required")
     @Column(name = "first_name")
     private String firstName;
 
+    @NotEmpty(message = "Last Name is required")
     @Column(name = "last_name")
     private String lastName;
 
+    @NotEmpty(message = "Email is required")
+    @Email(message = "Please enter valid email address")
     @Column(name = "email")
     private String email;
 
