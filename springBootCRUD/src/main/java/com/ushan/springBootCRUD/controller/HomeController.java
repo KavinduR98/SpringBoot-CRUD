@@ -1,17 +1,27 @@
 package com.ushan.springBootCRUD.controller;
 
+import com.ushan.springBootCRUD.model.Customer;
+import com.ushan.springBootCRUD.service.CustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class HomeController {
 
+    private final CustomerService customerService;
+
+    public HomeController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
     @GetMapping("/")
     public String home(@RequestParam(value = "name", defaultValue = "") String name, Model model) {
-        String sayHello = "Hello " +name;
-        model.addAttribute("message", sayHello);
+        List<Customer> customerList = customerService.getAllCustomers();
+        model.addAttribute("customerList", customerList);
         return "home";
     }
 
