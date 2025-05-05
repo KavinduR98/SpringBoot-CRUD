@@ -69,6 +69,10 @@
                     <td class="px-6 py-5 text-center" th:text="${customer.email}"></td>
                     <td class="px-6 py-5 text-center" th:text="${customer.phone}"></td>
                     <td class="px-6 py-5 text-center">
+                        <a th:href="@{/customer/{id}(id=${customer.id})}"
+                           class="bg-green-600 font-medium hover:bg-green-700 px-3 py-2 rounded-md text-sm text-white mr-1">
+                            Show
+                        </a>
                         <a th:href="@{/customer/{id}/edit(id=${customer.id})}"
                         class="bg-blue-600 font-medium hover:bg-blue-700 px-3 py-2 rounded-md text-sm text-white mr-1">
                             Edit

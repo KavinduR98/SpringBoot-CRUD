@@ -52,7 +52,7 @@
                 </div>
                 <div class="mx-auto max-w-2xl text-center">
                     <h2 class="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl"
-                        th:text="${customer.id} != null ? 'Edit Customer' : 'Add New Customer'">
+                        th:text="${customer.id != null} ? 'Edit ' + ${customer.firstName} + ' ' + ${customer.lastName} : 'Add New Customer'">
                         Add New Customer
                     </h2>
                 </div>

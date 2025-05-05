@@ -57,4 +57,19 @@ public class HomeController {
         return "create";
     }
 
+    @GetMapping("customer/{id}")
+    public String show(@PathVariable long id, Model model){
+        customerService.findById(id)
+                .ifPresent(customer -> model.addAttribute("customer", customer));
+
+        return "show";
+    }
+
+    @GetMapping("customer/{id}/delete")
+    public String delete(@PathVariable long id, RedirectAttributes redirectAttributes){
+        customerService.deleteById(id);
+        redirectAttributes.addFlashAttribute("message", "Customer deleted!");
+        return "redirect:/";
+    }
+
 }
